@@ -3,7 +3,7 @@
 
 #include "duckdb/common/string_util.hpp"
 #include "duckdb/common/case_insensitive_map.hpp"
-#include "duckdb/parser/tableref/matchref.hpp"
+#include "duckpgq/core/parser/tableref/matchref.hpp"
 #include "duckdb/parser/tableref/subqueryref.hpp"
 #include "duckdb/parser/tableref/joinref.hpp"
 #include "duckdb/parser/tableref/basetableref.hpp"
@@ -23,8 +23,8 @@
 #include "duckdb/common/enums/joinref_type.hpp"
 #include "duckpgq/core/utils/compressed_sparse_row.hpp"
 
-#include "duckdb/parser/property_graph_table.hpp"
-#include "duckdb/parser/subpath_element.hpp"
+#include "duckpgq/core/parser/property_graph_table.hpp"
+#include "duckpgq/core/parser/subpath_element.hpp"
 #include <duckdb/common/enums/set_operation_type.hpp>
 #include <duckpgq/core/functions/table.hpp>
 #include <duckpgq/core/utils/duckpgq_utils.hpp>
@@ -1080,10 +1080,10 @@ unique_ptr<TableRef> PGQMatchFunction::MatchBindReplace(ClientContext &context, 
 //------------------------------------------------------------------------------
 // Register functions
 //------------------------------------------------------------------------------
-void CoreTableFunctions::RegisterMatchTableFunction(DatabaseInstance &db) {
+void CoreTableFunctions::RegisterMatchTableFunction(ExtensionLoader &loader) {
 	// TableFunctionSet match_set("duckpgq_match");
 	// match_set.AddFunction(PGQMatchFunction());
-	ExtensionUtil::RegisterFunction(db, PGQMatchFunction());
+	loader.RegisterFunction(PGQMatchFunction());
 }
 
 } // namespace duckdb

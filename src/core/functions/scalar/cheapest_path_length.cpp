@@ -164,9 +164,9 @@ static void CheapestPathLengthFunction(DataChunk &args, ExpressionState &state, 
 //------------------------------------------------------------------------------
 // Register functions
 //------------------------------------------------------------------------------
-void CoreScalarFunctions::RegisterCheapestPathLengthScalarFunction(DatabaseInstance &db) {
-	ExtensionUtil::RegisterFunction(
-	    db, ScalarFunction("cheapest_path_length",
+void CoreScalarFunctions::RegisterCheapestPathLengthScalarFunction(ExtensionLoader &loader) {
+	loader.RegisterFunction(
+	    ScalarFunction("cheapest_path_length",
 	                       {LogicalType::INTEGER, LogicalType::BIGINT, LogicalType::BIGINT, LogicalType::BIGINT},
 	                       LogicalType::ANY, CheapestPathLengthFunction,
 	                       CheapestPathLengthFunctionData::CheapestPathLengthBind));

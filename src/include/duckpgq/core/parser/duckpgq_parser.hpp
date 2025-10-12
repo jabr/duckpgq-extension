@@ -1,17 +1,19 @@
 #pragma once
 #include "duckpgq/common.hpp"
 
+#include "duckpgq/core/parser/parsed_data/create_property_graph_info.hpp"
+#include "duckpgq/core/parser/parsed_data/drop_property_graph_info.hpp"
 #include <duckpgq_state.hpp>
 
 namespace duckdb {
 
 struct CorePGQParser {
-	static void Register(DatabaseInstance &db) {
-		RegisterPGQParserExtension(db);
+	static void Register(ExtensionLoader &loader) {
+		RegisterPGQParserExtension(loader);
 	}
 
 private:
-	static void RegisterPGQParserExtension(DatabaseInstance &db);
+	static void RegisterPGQParserExtension(ExtensionLoader &loader);
 };
 
 struct DuckPGQParserExtensionInfo : ParserExtensionInfo {

@@ -1,4 +1,4 @@
-#include "duckdb/common/vector_operations/quaternary_executor.hpp"
+#include "duckpgq/core/common/vector_operations/quaternary_executor.hpp"
 #include "duckdb/main/client_data.hpp"
 #include "duckdb/planner/expression/bound_function_expression.hpp"
 #include "duckpgq/common.hpp"
@@ -210,9 +210,9 @@ ScalarFunctionSet GetCSREdgeFunction() {
 //------------------------------------------------------------------------------
 // Register functions
 //------------------------------------------------------------------------------
-void CoreScalarFunctions::RegisterCSRCreationScalarFunctions(DatabaseInstance &db) {
-	ExtensionUtil::RegisterFunction(db, GetCSREdgeFunction());
-	ExtensionUtil::RegisterFunction(db, GetCSRVertexFunction());
+void CoreScalarFunctions::RegisterCSRCreationScalarFunctions(ExtensionLoader &loader) {
+	loader.RegisterFunction(GetCSREdgeFunction());
+	loader.RegisterFunction(GetCSRVertexFunction());
 }
 
 } // namespace duckdb

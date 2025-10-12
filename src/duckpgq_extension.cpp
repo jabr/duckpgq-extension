@@ -1,3 +1,4 @@
+#include "include/duckpgq_extension.hpp"
 #define DUCKDB_EXTENSION_MAIN
 
 #include "duckpgq_extension.hpp"
@@ -8,35 +9,27 @@
 
 namespace duckdb {
 
-static void LoadInternal(DatabaseInstance &instance) {
-	CoreModule::Register(instance);
-
-	// Fill in extension load information.
-	std::string description = StringUtil::Format("Adds support for SQL/PGQ and graph algorithms.");
-	ExtensionUtil::RegisterExtension(instance, /*name=*/"duckpgq", ExtensionLoadedInfo {std::move(description)});
+static void LoadInternal(ExtensionLoader &loader) {
+	CoreModule::Register(loader);
+	loader.SetDescription("Adds support for SQL/PGQ and graph algorithms.");
 }
 
-void DuckpgqExtension::Load(DuckDB &db) {
-	LoadInternal(*db.instance);
+void DuckpgqExtension::Load(ExtensionLoader &loader) {
+	LoadInternal(loader);
 }
 
 std::string DuckpgqExtension::Name() {
 	return "duckpgq";
 }
 
+std::string DuckpgqExtension::Version() const {
+	return "";
+}
+
 } // namespace duckdb
 
 extern "C" {
-
-DUCKDB_EXTENSION_API void duckpgq_init(duckdb::DatabaseInstance &db) {
-	LoadInternal(db);
-}
-
-DUCKDB_EXTENSION_API const char *duckpgq_version() {
-	return duckdb::DuckDB::LibraryVersion();
+DUCKDB_CPP_EXTENSION_ENTRY(duckpgq, loader) {
+	duckdb::LoadInternal(loader);
 }
 }
-
-#ifndef DUCKDB_EXTENSION_MAIN
-#error DUCKDB_EXTENSION_MAIN not defined
-#endif

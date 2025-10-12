@@ -1,5 +1,5 @@
 #include "duckpgq/core/functions/table/describe_property_graph.hpp"
-#include "duckdb/parser/parsed_data/create_property_graph_info.hpp"
+#include "duckpgq/core/parser/parsed_data/create_property_graph_info.hpp"
 #include "duckdb/parser/query_node/select_node.hpp"
 #include "duckdb/parser/statement/create_statement.hpp"
 #include "duckdb/parser/tableref/showref.hpp"
@@ -159,8 +159,8 @@ void DescribePropertyGraphFunction::DescribePropertyGraphFunc(ClientContext &con
 //------------------------------------------------------------------------------
 // Register functions
 //------------------------------------------------------------------------------
-void CoreTableFunctions::RegisterDescribePropertyGraphTableFunction(DatabaseInstance &db) {
-	ExtensionUtil::RegisterFunction(db, DescribePropertyGraphFunction());
+void CoreTableFunctions::RegisterDescribePropertyGraphTableFunction(ExtensionLoader &loader) {
+	loader.RegisterFunction(DescribePropertyGraphFunction());
 }
 
 } // namespace duckdb

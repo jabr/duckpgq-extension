@@ -15,7 +15,7 @@
 #include "duckdb/parser/query_node/set_operation_node.hpp"
 
 #include "duckdb/parser/expression/columnref_expression.hpp"
-#include "duckdb/parser/property_graph_table.hpp"
+#include "duckpgq/core/parser/property_graph_table.hpp"
 #include "duckdb/parser/query_node/select_node.hpp"
 #include "duckdb/parser/tableref/joinref.hpp"
 #include "duckpgq/common.hpp"

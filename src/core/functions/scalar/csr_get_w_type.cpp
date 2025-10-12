@@ -38,8 +38,8 @@ static void GetCsrWTypeFunction(DataChunk &args, ExpressionState &state, Vector 
 //------------------------------------------------------------------------------
 // Register functions
 //------------------------------------------------------------------------------
-void CoreScalarFunctions::RegisterGetCSRWTypeScalarFunction(DatabaseInstance &db) {
-	ExtensionUtil::RegisterFunction(db, ScalarFunction("csr_get_w_type", {LogicalType::INTEGER}, LogicalType::INTEGER,
+void CoreScalarFunctions::RegisterGetCSRWTypeScalarFunction(ExtensionLoader &loader) {
+	loader.RegisterFunction(ScalarFunction("csr_get_w_type", {LogicalType::INTEGER}, LogicalType::INTEGER,
 	                                                   GetCsrWTypeFunction, CSRFunctionData::CSRBind));
 }
 
