@@ -12,13 +12,13 @@
 #include <duckdb/parser/parsed_data/create_pragma_function_info.hpp>
 
 #include "duckdb/function/table_function.hpp"
-#include "duckpgq/core/parser/parsed_data/create_property_graph_info.hpp"
-#include "duckpgq/core/parser/path_element.hpp"
-#include "duckpgq/core/parser/path_pattern.hpp"
-#include "duckpgq/core/parser/subpath_element.hpp"
-#include "duckpgq/core/parser/property_graph_table.hpp"
+#include "duckdb/parser/parsed_data/create_property_graph_info.hpp"
+#include "duckdb/parser/path_element.hpp"
+#include "duckdb/parser/path_pattern.hpp"
+#include "duckdb/parser/subpath_element.hpp"
+#include "duckdb/parser/property_graph_table.hpp"
 
-#include <duckpgq/core/parser/tableref/matchref.hpp>
+#include <duckdb/parser/tableref/matchref.hpp>
 
 namespace duckdb {
 

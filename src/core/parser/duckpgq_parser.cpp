@@ -17,7 +17,7 @@
 #include <duckpgq/core/functions/table/describe_property_graph.hpp>
 #include <duckpgq/core/functions/table/drop_property_graph.hpp>
 
-#include <duckpgq/core/parser/tableref/matchref.hpp>
+#include <duckdb/parser/tableref/matchref.hpp>
 #include <duckpgq/core/functions/table/summarize_property_graph.hpp>
 
 #include "duckpgq/core/utils/duckpgq_utils.hpp"

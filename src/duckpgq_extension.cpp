@@ -1,4 +1,3 @@
-#include "include/duckpgq_extension.hpp"
 #define DUCKDB_EXTENSION_MAIN
 
 #include "duckpgq_extension.hpp"
@@ -23,7 +22,11 @@ std::string DuckpgqExtension::Name() {
 }
 
 std::string DuckpgqExtension::Version() const {
+#ifdef EXT_VERSION_DUCKPGQ
+	return EXT_VERSION_DUCKPGQ;
+#else
 	return "";
+#endif
 }
 
 } // namespace duckdb

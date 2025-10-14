@@ -4,7 +4,6 @@
 #include "duckdb/common/case_insensitive_map.hpp"
 
 #include <duckpgq/core/utils/compressed_sparse_row.hpp>
-#include "duckpgq/core/parser/parsed_data/create_property_graph_info.hpp"
 
 namespace duckdb {
 
